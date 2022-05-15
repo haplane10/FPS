@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Animator animator;
+    public AnimationController ac;
     public float speed;
     public Rigidbody rigid;
-    public bool isInteract = false;
-
 
     // Start is called before the first frame update
     void Start()
@@ -23,38 +21,37 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.V))
         {
-            animator.SetBool("IsField", !animator.GetBool("IsField"));
-            speed *= (animator.GetBool("IsField") ? 2f : 0.5f);
+            ac.PlayBoolAnim("IsField");
+            speed *= (ac.GetBool("IsField") ? 2f : 0.5f);
         }
 
-        if (!isInteract)
+        if (!ac.isInteract)
         {
             var dirX = Input.GetAxisRaw("Horizontal");
             var dirZ = Input.GetAxisRaw("Vertical");
 
             if (dirX != 0 || dirZ != 0)
             {
-                animator.SetBool("IsMove", true);
+                ac.PlayBoolAnim("IsMove", true);
                 rigid.velocity = (transform.forward * dirZ + transform.right * dirX).normalized * speed;
             }
             else
             {
-                animator.SetBool("IsMove", false);
+                ac.PlayBoolAnim("IsMove", false);
             }
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-            animator.SetTrigger("Interact");
-            StartCoroutine(co_Interact());
+            ac.PlayTriggerAnim("Interact");
+            StartCoroutine(ac.co_Interact());
+        }
+
+        if (Input.GetAxis("Jump") != 0)
+        {
+
         }
     }
 
-    IEnumerator co_Interact()
-    {
-        isInteract = true;
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        isInteract = false;
-    }
+    
 }

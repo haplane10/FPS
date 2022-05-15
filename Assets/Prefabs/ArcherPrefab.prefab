@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5886820614635618472}
   - component: {fileID: 5886820614635618475}
   - component: {fileID: 5886820614635618474}
+  - component: {fileID: 9087060573522322882}
+  - component: {fileID: 5886820614251638965}
   m_Layer: 0
   m_Name: ArcherPrefab
   m_TagString: Untagged
@@ -76,10 +78,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2aee2254703fd5429726683631f58da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 8809752425007978067}
+  ac: {fileID: 9087060573522322882}
   speed: 2
   rigid: {fileID: 5886820614635618472}
+--- !u!114 &9087060573522322882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5886820614635618469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a94dcdefff41c49c8b7fc1c1c1516956, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8809752425007978067}
   isInteract: 0
+--- !u!114 &5886820614251638965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5886820614635618469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4ae91c1600d46fc952424bd1ac5cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  look: {x: 0, y: 0}
+  rotationPower: 5
+  head: {fileID: 0}
 --- !u!1001 &5886820614038196275
 PrefabInstance:
   m_ObjectHideFlags: 0
